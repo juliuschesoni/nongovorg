@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Person</title>
+    <link rel="icon" href="../images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+        <h2>Enter a new person</h2>
+    </header>
+    <nav class="form-nav">
+      <a href="../../admin/admin.html">admin</a>
+      <a href="../../">logout</a>
+    </nav>
+    <main>
+    <section class="form-section">
+    <form id="personForm" method="post" action="">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" placeholder="john"required><br>
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" placeholder="doe"required><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required pattern="[a-zA-Z0-9]+@lbcngo\.com" placeholder="johndoe@lbcngo.com" title="Enter a valid email address ending with @lbcngo.com" autocomplete="off" name="randomemail">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" value="password"><br>
+        <input type="hidden" id="personTypeId" name="personTypeId" value=""><br>
+        <input type="submit" value="Submit">
+    </form>
+    </section>
+    </main>
+    <footer class="a_footer" id="a_footer">
+      <div id="a_footerItems">
+         <span>© 2024 LBC</span>
+           <ul>
+           <li>Privacy and Cookies</li>
+           <li>Content Policy</li>
+           <li>Terms of Use</li>
+           <li>Feedback</li>
+           </ul>
+      </div>
+    </footer>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            var personTypeIdInput = document.getElementById('personTypeId');
+            var urlParams = new URLSearchParams(window.location.search);
+            var personTypeId = urlParams.get('personTypeId');
+            personTypeIdInput.value = personTypeId;
+
+            var form = document.getElementById('personForm');
+            form.action = '../../backend/forms/personF.php?personTypeId=' + personTypeId;
+
+            // Clear form fields on page load
+            form.reset();
+        });
+    </script>
+    <script src="../styles/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

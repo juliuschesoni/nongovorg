@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Equipment</title>
+    <link rel="icon" href="../images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+        <h2>Enter a new equipment</h2>
+    </header>
+    <nav class="form-nav">
+      <a href="../../admin/admin.html">admin</a>
+      <a href="../../">logout</a>
+    </nav>
+    <main>
+        <section class="form-section">
+            <form id="equipmentForm" method="post" action="">
+                <label for="name">Equipment:</label>
+                <input type="text" id="name" name="name" placeholder="equipment" required><br>
+                <input type="hidden" id="typeId" name="typeId">
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+    </main>
+    <footer class="a_footer" id="a_footer">
+      <div id="a_footerItems">
+         <span>© 2024 LBC</span>
+           <ul>
+           <li>Privacy and Cookies</li>
+           <li>Content Policy</li>
+           <li>Terms of Use</li>
+           <li>Feedback</li>
+           </ul>
+      </div>
+    </footer>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            var equipmentTypeIdInput = document.getElementById('typeId');
+            var urlParams = new URLSearchParams(window.location.search);
+            var equipmentTypeId = urlParams.get('typeId');
+            equipmentTypeIdInput.value = equipmentTypeId;
+
+            var form = document.getElementById('equipmentForm');
+            form.action = '../../backend/forms/equipmentF.php?typeId=' + equipmentTypeId;
+
+            // Clear form fields on page load
+            form.reset();
+        });
+    </script>
+    <script>
+    // Extract the error message from the URL query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+
+    // Display the error message if it exists
+    if (error) {
+        const errorMessage = document.createElement('p');
+        errorMessage.textContent = 'Equipment Exists.';
+        errorMessage.style.color = 'black';
+        errorMessage.style.textAlign = 'center';
+        document.body.appendChild(errorMessage);
+        setTimeout(function() {
+            document.body.removeChild(errorMessage);
+        }, 3000);
+    }
+    </script>
+    <script src="../styles/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

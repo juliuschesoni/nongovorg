@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Person</title>
+    <link rel="icon" href="../images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+        <h2>Register as a Donor</h2>
+    </header>
+    <nav class="form-nav">
+      <a href="../../">home</a>
+      <a href="donorlogin.html">login</a>
+    </nav>
+    <main>
+    <section class="form-section">
+    <form id="personForm" method="post" action="../../backend/forms/donorsignupF.php">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" placeholder="john"required><br>
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" placeholder="doe"required><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required pattern="[a-zA-Z0-9]+@lbcngo\.com" placeholder="johndoe@lbcngo.com" title="Enter a valid email address ending with @lbcngo.com" autocomplete="off" name="randomemail">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" value="password"><br>
+        <input type="hidden" id="personTypeId" name="personTypeId" value=""><br>
+        <input type="submit" value="Submit">
+    </form>
+    </section>
+    </main>
+    <footer class="a_footer" id="a_footer">
+      <div id="a_footerItems">
+         <span>© 2024 LBC</span>
+           <ul>
+           <li>Privacy and Cookies</li>
+           <li>Content Policy</li>
+           <li>Terms of Use</li>
+           <li>Feedback</li>
+           </ul>
+      </div>
+    </footer>    
+    <script>
+        // Get the error value from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+
+        // Display success or failure message based on the error value
+        if (error === '0') {
+            const successMessage = document.createElement('p');
+            successMessage.textContent = 'Account Registered Succesfully!';
+            successMessage.style.color = 'green';
+            successMessage.style.textAlign = 'center';
+            document.body.appendChild(successMessage);
+            setTimeout(function() {
+                document.body.removeChild(successMessage);
+            }, 3000);
+        } else if (error === '1') {
+            const errorMessage = document.createElement('p');
+            errorMessage.textContent = 'Account already exists, Please log in';
+            errorMessage.style.color = 'red';
+            errorMessage.style.textAlign = 'center';
+            document.body.appendChild(errorMessage);
+            setTimeout(function() {
+                document.body.removeChild(errorMessage);
+            }, 3000);
+        }
+    </script>
+    <script src="../styles/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

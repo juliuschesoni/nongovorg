@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="icon" href="../images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+       <h2 id="homepage">Admin Login</h2>
+    </header>
+    <nav class="form-nav">
+      <a href="../../">home</a>
+    </nav>
+    <main>
+    <section class="form-section">
+        <form action="../../backend/forms/adminF.php" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="administrator"required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" value="password"required>
+            <input type="submit" value="login">
+        </form>
+    </section>
+    </main>
+    <footer class="a_footer" id="a_footer">
+      <div id="a_footerItems">
+         <span>© 2024 LBC</span>
+           <ul>
+           <li>Privacy and Cookies</li>
+           <li>Content Policy</li>
+           <li>Terms of Use</li>
+           <li>Feedback</li>
+           </ul>
+      </div>
+    </footer>
+    <script>
+    // Extract the error message from the URL query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+
+    // Display the error message if it exists
+    if (error) {
+        const errorMessage = document.createElement('p');
+        errorMessage.textContent = 'Wrong username or password.';
+        errorMessage.style.color = 'black';
+        errorMessage.style.textAlign = 'center';
+        document.body.appendChild(errorMessage);
+        setTimeout(function() {
+            document.body.removeChild(errorMessage);
+        }, 3000);
+    }
+    </script>
+    <script src="frontend/styles/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
