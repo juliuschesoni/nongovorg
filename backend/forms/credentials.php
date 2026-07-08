@@ -1,6 +1,6 @@
 <?php
 $servername = 'localhost';
 $username = 'root';
-$password = 'Glock7&9pizzo';
+$password = '142857';
 $dbname = 'non_gov_org';
 ?>
